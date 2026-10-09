@@ -214,7 +214,7 @@ export const ArchitectureImpactView: React.FC<ArchitectureImpactViewProps> = ({
           {/* Optimized fflib Card */}
           <div className="p-4 rounded-lg bg-emerald-50/50 border border-emerald-200 text-left">
             <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 block mb-1">
-              Alex Rivera fflib Domain Architecture
+              {PORTFOLIO_DATA.candidate.name} fflib Domain Architecture
             </span>
             <h4 className="text-xs font-bold text-slate-900 mb-3">Single-Pass Bulk Selector & UnitOfWork</h4>
 

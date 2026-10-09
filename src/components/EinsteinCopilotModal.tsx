@@ -15,7 +15,7 @@ export const EinsteinCopilotModal: React.FC<EinsteinCopilotModalProps> = ({
   const [messages, setMessages] = useState<Array<{ sender: 'user' | 'einstein'; text: string; tabAction?: string }>>([
     {
       sender: 'einstein',
-      text: "Hello! I am Einstein Copilot, grounded in Alex Rivera's verified Salesforce CSG records, CTA portfolio, and system architecture blueprints. How can I assist your review?",
+      text: `Hello! I am Einstein Copilot, grounded in ${PORTFOLIO_DATA.candidate.name}'s verified Salesforce CSG records, CTA portfolio, and system architecture blueprints. How can I assist your review?`,
     },
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -26,26 +26,26 @@ export const EinsteinCopilotModal: React.FC<EinsteinCopilotModalProps> = ({
   const quickQuestions = [
     {
       label: "40M Banking Migration Strategy",
-      prompt: "How did Alex migrate 40M+ banking records with zero downtime?",
-      reply: "Alex designed a dual BigObjects and Skinny Tables archival pattern with Async SOQL. Active transactional records (<2 years) reside in sObjects with selective indexing, while historical data streams to BigObjects. This eliminated 74% of SOQL Governor Limit pressure and unlocked $14.2M annualized savings.",
+      prompt: `How did ${PORTFOLIO_DATA.candidate.name} migrate 40M+ banking records with zero downtime?`,
+      reply: `${PORTFOLIO_DATA.candidate.name} designed a dual BigObjects and Skinny Tables archival pattern with Async SOQL. Active transactional records (<2 years) reside in sObjects with selective indexing, while historical data streams to BigObjects. This eliminated 74% of SOQL Governor Limit pressure and unlocked $14.2M annualized savings.`,
       tabAction: "architecture-and-impact",
     },
     {
       label: "Apex Enterprise Patterns (fflib)",
-      prompt: "Explain Alex's fflib SObjectDomain implementation.",
-      reply: "Alex implements full Separation of Concerns (fflib): Triggers delegate 100% of execution to AccountTriggerHandler extends fflib_SObjectDomain. UnitOfWork encapsulates transactional boundaries, avoiding fragmented DML and guaranteeing 0 SOQL inside iterative loops with <18ms execution times.",
+      prompt: `Explain ${PORTFOLIO_DATA.candidate.name}'s fflib SObjectDomain implementation.`,
+      reply: `${PORTFOLIO_DATA.candidate.name} implements full Separation of Concerns (fflib): Triggers delegate 100% of execution to AccountTriggerHandler extends fflib_SObjectDomain. UnitOfWork encapsulates transactional boundaries, avoiding fragmented DML and guaranteeing 0 SOQL inside iterative loops with <18ms execution times.`,
       tabAction: "apex-and-lwc-solutions",
     },
     {
       label: "CTA Review Board Readiness",
-      prompt: "What is Alex Rivera's timeline and preparation for the CTA Review Board?",
-      reply: "Alex has passed both System Architect and Application Architect pyramids (14x certified total) and is currently preparing for the CTA Review Board (Stage 5 of 5). He has completed 35+ timed board scenario simulations covering Large Data Volumes, Identity Management (SAML/OAuth), and multi-cloud integration.",
+      prompt: `What is ${PORTFOLIO_DATA.candidate.name}'s timeline and preparation for the CTA Review Board?`,
+      reply: `${PORTFOLIO_DATA.candidate.name} has passed both System Architect and Application Architect pyramids (14x certified total) and is currently preparing for the CTA Review Board (Stage 5 of 5). He has completed 35+ timed board scenario simulations covering Large Data Volumes, Identity Management (SAML/OAuth), and multi-cloud integration.`,
       tabAction: "trailhead-and-badges",
     },
     {
       label: "GovCloud & Security Clearance",
-      prompt: "Is Alex cleared for Salesforce GovCloud and FedRAMP architectures?",
-      reply: "Yes! Alex is Salesforce GovCloud Ready with extensive experience delivering FedRAMP High and HIPAA compliant architectures using Salesforce Shield Platform Encryption, HSM key management, and event-driven microsegmentation.",
+      prompt: `Is ${PORTFOLIO_DATA.candidate.name} cleared for Salesforce GovCloud and FedRAMP architectures?`,
+      reply: `Yes! ${PORTFOLIO_DATA.candidate.name} is Salesforce GovCloud Ready with extensive experience delivering FedRAMP High and HIPAA compliant architectures using Salesforce Shield Platform Encryption, HSM key management, and event-driven microsegmentation.`,
       tabAction: "contact-and-schedule",
     },
   ];
@@ -78,17 +78,17 @@ export const EinsteinCopilotModal: React.FC<EinsteinCopilotModalProps> = ({
     setTimeout(() => {
       setIsTyping(false);
       const lower = userText.toLowerCase();
-      let answer = `Based on Alex Rivera's Salesforce CSG profile (Connected Org: ${PORTFOLIO_DATA.candidate.connectedOrg}), Alex holds 14 Salesforce certifications, 7x Ranger status with 384,100 points, and an annualized client value of $42.8M.`;
+      let answer = `Based on ${PORTFOLIO_DATA.candidate.name}'s Salesforce CSG profile (Connected Org: ${PORTFOLIO_DATA.candidate.connectedOrg}), ${PORTFOLIO_DATA.candidate.name} holds 14 Salesforce certifications, 7x Ranger status with 384,100 points, and an annualized client value of $42.8M.`;
       let tabAction = 'overview';
 
       if (lower.includes('soql') || lower.includes('terminal') || lower.includes('query')) {
-        answer = "Alex has engineered high-performance SOQL execution architectures. You can test live SOQL queries in the Interactive SOQL Terminal tab.";
+        answer = `${PORTFOLIO_DATA.candidate.name} has engineered high-performance SOQL execution architectures. You can test live SOQL queries in the Interactive SOQL Terminal tab.`;
         tabAction = 'interactive-soql-terminal';
       } else if (lower.includes('code') || lower.includes('apex') || lower.includes('lwc')) {
-        answer = "In the Apex & LWC Workbench, you can inspect Alex's fflib_SObjectDomain domain handler, trigger dispatchers, and Agentforce autonomous LWC handlers with 98.4% test assertion coverage.";
+        answer = `In the Apex & LWC Workbench, you can inspect ${PORTFOLIO_DATA.candidate.name}'s fflib_SObjectDomain domain handler, trigger dispatchers, and Agentforce autonomous LWC handlers with 98.4% test assertion coverage.`;
         tabAction = 'apex-and-lwc-solutions';
       } else if (lower.includes('hire') || lower.includes('contact') || lower.includes('call') || lower.includes('schedule')) {
-        answer = "You can schedule an architecture consultation or CTA review mock with Alex directly through the Consultation scheduler. Typical response SLA is under 4 business hours.";
+        answer = `You can schedule an architecture consultation or CTA review mock with ${PORTFOLIO_DATA.candidate.name} directly through the Consultation scheduler. Typical response SLA is under 4 business hours.`;
         tabAction = 'contact-and-schedule';
       }
 

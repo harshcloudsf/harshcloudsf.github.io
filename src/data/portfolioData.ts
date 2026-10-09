@@ -76,7 +76,7 @@ export interface SoqlDataset {
 
 export const PORTFOLIO_DATA = {
   candidate: {
-    name: "Alex Rivera",
+    name: "Harsh Sahu",
     title: "CTA Aspirant & Senior Success Engineer @ Salesforce",
     currentOrg: "Salesforce CSG (Americas)",
     trailheadRank: "7x Ranger (520+ Badges)",
@@ -88,9 +88,10 @@ export const PORTFOLIO_DATA = {
     location: "San Francisco, CA / Hybrid",
     availability: "Open for Advisory",
     securityClearance: "Salesforce GovCloud Ready",
-    github: "@alexrivera-sfdc",
-    email: "alex.rivera.sfdc@gmail.com",
-    linkedin: "https://linkedin.com",
+    github: "@harshcloudsf",
+    email: "harshsahuprimary@gmail.com",
+    linkedin: "https://linkedin.com/in/harshcloudsf",
+    website: "https://harshcloudsf.github.io/",
     tagline: "Enterprise Core Banking, High-Scale Event Architectures, Einstein 1 Studio & Agentforce Engineering",
     release: "Spring '25 Core Release",
     connectedOrg: "SFDC-PROD-CSG-0089",
@@ -334,7 +335,7 @@ export const PORTFOLIO_DATA = {
       description: "Enterprise Domain Handler implementing fflib_SObjectDomain with clean UnitOfWork dispatch and Data Cloud validation.",
       code: `/**
  * @description Enterprise Domain Handler implementing fflib_SObjectDomain
- * @author Alex Rivera, CTA Aspirant
+ * @author Harsh Sahu, CTA Aspirant
  */
 public with sharing class AccountTriggerHandler extends fflib_SObjectDomain implements IAccounts {
     public static IAccounts newInstance(List<Account> recordList) {
@@ -376,7 +377,7 @@ public with sharing class AccountTriggerHandler extends fflib_SObjectDomain impl
       description: "One Trigger per SObject pattern delegating immediately to fflib_SObjectDomain trigger router.",
       code: `/**
  * @description Clean trigger entry point - 1 Trigger per SObject standard
- * @author Alex Rivera, CTA Aspirant
+ * @author Harsh Sahu, CTA Aspirant
  */
 trigger AccountTrigger on Account (
     before insert, 
@@ -399,7 +400,7 @@ trigger AccountTrigger on Account (
       path: "force-app/main/default/classes/AccountBalanceService.cls",
       description: "Enterprise Selector & Service Layer ensuring Bulkification and zero SOQL in loops for Core Banking transactions.",
       code: `/**
- * @author Alex Rivera, CTA Aspirant
+ * @author Harsh Sahu, CTA Aspirant
  * @description Enterprise Selector & Service Layer for Banking Limits
  */
 public inherited sharing class AccountBalanceService implements IAccountBalanceService {
@@ -520,7 +521,7 @@ export default class AgentforceOrchestrationViewer extends LightningElement {
         "Security: Shield Platform Encryption with HSM Key Management"
       ],
       quote: {
-        text: "Alex transformed our core Salesforce platform. His deep grasp of Apex limits and event streaming solved issues our previous three teams couldn't untangle.",
+        text: "Harsh transformed our core Salesforce platform. His deep grasp of Apex limits and event streaming solved issues our previous three teams couldn't untangle.",
         author: "Sarah Jenkins",
         role: "VP, Enterprise Engineering @ FinTech Corp"
       }
@@ -550,7 +551,7 @@ export default class AgentforceOrchestrationViewer extends LightningElement {
         "Automated emergency escalation triggers via Queueable Apex"
       ],
       quote: {
-        text: "The clinical uptime and zero-drop event architecture Alex designed saved our clinicians critical minutes during triage workflows.",
+        text: "The clinical uptime and zero-drop event architecture Harsh designed saved our clinicians critical minutes during triage workflows.",
         author: "Dr. Marcus Vance",
         role: "Chief Medical Information Officer"
       }
@@ -580,7 +581,7 @@ export default class AgentforceOrchestrationViewer extends LightningElement {
         "Apex Invocable actions executing billing adjustments in transactional scope"
       ],
       quote: {
-        text: "One of the sharpest Technical Architects I have coached. Alex brings pristine rigor to multi-cloud designs and enterprise scale.",
+        text: "One of the sharpest Technical Architects I have coached. Harsh brings pristine rigor to multi-cloud designs and enterprise scale.",
         author: "David Kumar, CTA",
         role: "Regional Director @ Salesforce CSG"
       }
@@ -659,7 +660,7 @@ export default class AgentforceOrchestrationViewer extends LightningElement {
       role: "VP, Enterprise Engineering @ FinTech Corp",
       initials: "SM",
       avatarColor: "bg-[#0176d3]",
-      content: "\"Alex transformed our core Salesforce platform. His deep grasp of Apex limits and event streaming solved issues our previous three teams couldn't untangle.\"",
+      content: "\"Harsh transformed our core Salesforce platform. His deep grasp of Apex limits and event streaming solved issues our previous three teams couldn't untangle.\"",
       timestamp: "2 days ago",
       likes: 34,
       commentsCount: 12,
@@ -667,7 +668,7 @@ export default class AgentforceOrchestrationViewer extends LightningElement {
         {
           author: "Elena Rostova",
           role: "Lead Salesforce Architect @ FinTech Corp",
-          text: "Echoing Sarah's praise! Alex's fflib selector patterns cut our test suite runtime from 45 mins to 6 mins.",
+          text: "Echoing Sarah's praise! Harsh's fflib selector patterns cut our test suite runtime from 45 mins to 6 mins.",
           time: "1 day ago"
         },
         {
@@ -684,7 +685,7 @@ export default class AgentforceOrchestrationViewer extends LightningElement {
       role: "Regional Director @ Salesforce CSG",
       initials: "DK",
       avatarColor: "bg-[#3d4cce]",
-      content: "\"One of the sharpest Technical Architects I have coached. Alex brings pristine rigor to multi-cloud designs and enterprise scale.\"",
+      content: "\"One of the sharpest Technical Architects I have coached. Harsh brings pristine rigor to multi-cloud designs and enterprise scale.\"",
       timestamp: "5 days ago",
       likes: 56,
       commentsCount: 18,
@@ -692,7 +693,7 @@ export default class AgentforceOrchestrationViewer extends LightningElement {
         {
           author: "Rachel Adams, CTA",
           role: "Senior Director, CTA Coaching",
-          text: "Alex's review board presentation rehearsals show exceptional clarity under high pressure.",
+          text: "Harsh's review board presentation rehearsals show exceptional clarity under high pressure.",
           time: "4 days ago"
         }
       ]

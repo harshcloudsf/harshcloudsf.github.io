@@ -68,7 +68,7 @@ export const ScheduleCallView: React.FC = () => {
             Schedule Architecture Consultation / 1:1 Advisory
           </h1>
           <p className="text-xs text-slate-600 mt-1">
-            Connect directly with Alex Rivera for technical advisory, CTA review board coaching, or large data volume audits.
+            Connect directly with {PORTFOLIO_DATA.candidate.name} for technical advisory, CTA review board coaching, or large data volume audits.
           </p>
         </div>
 
@@ -95,7 +95,7 @@ export const ScheduleCallView: React.FC = () => {
               <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg max-w-md mx-auto text-xs text-slate-700 font-mono text-left space-y-1">
                 <div>Format: {sessionTypes.find((s) => s.id === sessionType)?.title}</div>
                 <div>Scale Tier: {recordsScale}</div>
-                <div>Host: Alex Rivera (alex.rivera.sfdc@gmail.com)</div>
+                <div>Host: {PORTFOLIO_DATA.candidate.name} ({PORTFOLIO_DATA.candidate.email})</div>
               </div>
               <div className="pt-2">
                 <button

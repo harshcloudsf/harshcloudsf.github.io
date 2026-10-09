@@ -83,7 +83,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
             <div>
               <h2 className="text-base font-bold">Schedule Architecture 1:1 Consultation</h2>
               <span className="text-[11px] text-blue-100">
-                Direct advisory with Alex Rivera (SLA: &lt; 4 business hours)
+                Direct advisory with {PORTFOLIO_DATA.candidate.name} (SLA: &lt; 4 business hours)
               </span>
             </div>
           </div>
@@ -103,7 +103,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({
             </p>
             <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg max-w-md mx-auto text-xs text-slate-700 font-mono text-left">
               <div>Session: {sessionTypes.find(s => s.id === sessionType)?.title}</div>
-              <div>Host: Alex Rivera (alex.rivera.sfdc@gmail.com)</div>
+              <div>Host: {PORTFOLIO_DATA.candidate.name} ({PORTFOLIO_DATA.candidate.email})</div>
               <div>Platform: Google Meet / Salesforce Video</div>
             </div>
             <div className="pt-2">

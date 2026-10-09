@@ -229,7 +229,7 @@ export const Header: React.FC<HeaderProps> = ({
               <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-slate-200 p-3 text-slate-800 text-xs text-left z-50">
                 <div className="flex items-center gap-2.5 pb-2.5 border-b border-slate-100">
                   <div className="w-9 h-9 rounded-full bg-[#0176d3] text-white flex items-center justify-center font-bold">
-                    AR
+                    {PORTFOLIO_DATA.candidate.name.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div className="min-w-0">
                     <h4 className="font-bold text-xs truncate">{PORTFOLIO_DATA.candidate.name}</h4>
