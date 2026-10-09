@@ -1,79 +1,90 @@
 import React, { useState } from 'react';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
-import { QuickSearchModal } from './components/QuickSearchModal';
-import { EinsteinCopilotModal } from './components/EinsteinCopilotModal';
-import { AppLauncherModal } from './components/AppLauncherModal';
+import { SalesforceGlobalHeader } from './components/SalesforceGlobalHeader';
+import { SalesforceNavBar } from './components/SalesforceNavBar';
+import { SellerHomeDonutCards } from './components/SellerHomeDonutCards';
+import { SellerHomeLowerRow } from './components/SellerHomeLowerRow';
+import { SalesforceUtilityBar } from './components/SalesforceUtilityBar';
+import { DetailModals } from './components/DetailModals';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<string>('overview');
+  const [activeTab, setActiveTab] = useState<string>('home');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [activeModal, setActiveModal] = useState<
+    'experience' | 'skills' | 'projects' | 'certifications' | 'contact' | 'agentforce' | null
+  >(null);
 
-  // Modals state
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isEinsteinOpen, setIsEinsteinOpen] = useState(false);
-  const [isAppLauncherOpen, setIsAppLauncherOpen] = useState(false);
+  const handleOpenModal = (
+    type: 'experience' | 'skills' | 'projects' | 'certifications' | 'contact'
+  ) => {
+    setActiveModal(type);
+  };
 
-  const handleSelectTab = (tab: string) => {
-    setActiveTab(tab);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleOpenAgentforce = () => {
+    setActiveModal('agentforce');
   };
 
   return (
-    <div className="min-h-screen bg-[#fbf9f9] text-[#1b1c1c] flex flex-col font-sans antialiased">
-      {/* 1. Fixed Top Lightning Header */}
-      <Header
-        activeTab={activeTab}
-        onSelectTab={handleSelectTab}
-        onOpenSearch={() => setIsSearchOpen(true)}
-        onOpenEinstein={() => setIsEinsteinOpen(true)}
-        onOpenAppLauncher={() => setIsAppLauncherOpen(true)}
+    <div className="min-h-screen bg-[#f3f3f3] text-[#181818] flex flex-col font-sans antialiased selection:bg-[#00a1e0]/20 selection:text-[#0176d3]">
+      {/* 1. Global Salesforce Top Header (Search, ✨ Ask, Icons, Profile) */}
+      <SalesforceGlobalHeader
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        onOpenAgentforce={handleOpenAgentforce}
+        onOpenModal={handleOpenModal}
       />
 
-      {/* 2. Main Content Body with fixed header offset */}
-      <main className="w-full pt-[88px] flex-1 flex flex-col items-center justify-start p-4 sm:p-8">
-        {/* Clean, simple container ready for user's content */}
-        <div className="w-full max-w-5xl bg-white rounded-xl shadow-xs border border-slate-200 p-8 sm:p-12 text-center my-6">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#0176d3] to-[#005da9] flex items-center justify-center text-white mx-auto shadow-md mb-4">
-            <span className="material-symbols-outlined text-[36px]">cloud</span>
-          </div>
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-800">
-            Salesforce Lightning Console
-          </h2>
-          <p className="text-sm text-slate-500 mt-1 max-w-lg mx-auto">
-            Top header aur navigation bar set hai. Neeche ka area bilkul clean kar diya hai.
-          </p>
+      {/* 2. App Navigation Bar (9-dot Waffle Launcher, Sales, Tabs with Blue Underline Indicator) */}
+      <SalesforceNavBar
+        activeTab={activeTab}
+        onSelectTab={setActiveTab}
+        onOpenModal={handleOpenModal}
+      />
 
-          <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono text-slate-600">
-            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-            <span>Active Tab: <strong className="text-[#0176d3]">{activeTab}</strong></span>
+      {/* 3. Main Seller Home Dashboard Canvas */}
+      <main className="w-full pt-[96px] pb-14 px-3 sm:px-5 flex-1 flex flex-col max-w-[1920px] mx-auto">
+        {/* Page Banner Title (Developer Portfolio Home) */}
+        <div className="py-3 px-1 flex items-center justify-between">
+          <div className="flex items-baseline gap-3 flex-wrap text-left">
+            <h1 className="text-2xl sm:text-3xl font-light text-slate-800 tracking-tight">
+              Developer Home
+            </h1>
+            <span className="text-xs sm:text-sm text-slate-500 font-normal">
+              Harsh Sahu • Senior Success Guide | Techno-Functional Specialist @ Salesforce
+            </span>
           </div>
 
-          <p className="text-xs text-slate-400 mt-6">
-            Bataiye ab iske neeche kaun kaun se specific sections ya cards add karne hain?
-          </p>
+          {/* Right Sidebar Collapse Toggle Pill */}
+          <button
+            onClick={() => setActiveModal('contact')}
+            className="w-7 h-7 rounded-full bg-white border border-[#c9c9c9] hover:bg-slate-50 flex items-center justify-center text-[#0176d3] shadow-2xs transition-colors cursor-pointer"
+            title="Expand Candidate Overview"
+          >
+            <span className="material-symbols-outlined text-[18px]">
+              chevron_left
+            </span>
+          </button>
+        </div>
+
+        {/* Dashboard Cards Content */}
+        <div className="space-y-4 mt-1">
+          {/* Row 1: 4 Donut Metric Cards */}
+          <SellerHomeDonutCards onOpenModal={handleOpenModal} />
+
+          {/* Row 2: 4 Lower Cards (Contact Suggestions, My Goals, Today's Events, Today's Tasks) */}
+          <SellerHomeLowerRow onOpenModal={handleOpenModal} />
         </div>
       </main>
 
-      {/* 3. SLDS Console Footer */}
-      <Footer />
-
-      {/* Global Interactive Modals */}
-      <QuickSearchModal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        onSelectTab={handleSelectTab}
+      {/* 4. Fixed Bottom Salesforce Utility Bar (To Do List, Tableau Pulse, Org Status) */}
+      <SalesforceUtilityBar
+        onOpenAgentforce={handleOpenAgentforce}
+        onOpenModal={handleOpenModal}
       />
 
-      <EinsteinCopilotModal
-        isOpen={isEinsteinOpen}
-        onClose={() => setIsEinsteinOpen(false)}
-        onSelectTab={handleSelectTab}
-      />
-
-      <AppLauncherModal
-        isOpen={isAppLauncherOpen}
-        onClose={() => setIsAppLauncherOpen(false)}
-        onSelectTab={handleSelectTab}
+      {/* 5. Detail Modals & Agentforce Assistant Drawer */}
+      <DetailModals
+        modalType={activeModal}
+        onClose={() => setActiveModal(null)}
       />
     </div>
   );
