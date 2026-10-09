@@ -1,17 +1,9 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
-import { GlobalBanner } from './components/GlobalBanner';
 import { Footer } from './components/Footer';
 import { QuickSearchModal } from './components/QuickSearchModal';
 import { EinsteinCopilotModal } from './components/EinsteinCopilotModal';
 import { AppLauncherModal } from './components/AppLauncherModal';
-import { RecordSchemaModal } from './components/RecordSchemaModal';
-import { OverviewView } from './views/OverviewView';
-import { ApexLwcView } from './views/ApexLwcView';
-import { ArchitectureImpactView } from './views/ArchitectureImpactView';
-import { SoqlTerminalView } from './views/SoqlTerminalView';
-import { TrailheadBadgesView } from './views/TrailheadBadgesView';
-import { ScheduleCallView } from './views/ScheduleCallView';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('overview');
@@ -20,7 +12,6 @@ export default function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isEinsteinOpen, setIsEinsteinOpen] = useState(false);
   const [isAppLauncherOpen, setIsAppLauncherOpen] = useState(false);
-  const [isSchemaOpen, setIsSchemaOpen] = useState(false);
 
   const handleSelectTab = (tab: string) => {
     setActiveTab(tab);
@@ -39,34 +30,27 @@ export default function App() {
       />
 
       {/* 2. Main Content Body with fixed header offset */}
-      <main className="w-full pt-[88px] flex-1 flex flex-col">
-        {/* Top Global System Banner / Lightning Toast */}
-        <GlobalBanner onOpenEinstein={() => setIsEinsteinOpen(true)} />
+      <main className="w-full pt-[88px] flex-1 flex flex-col items-center justify-start p-4 sm:p-8">
+        {/* Clean, simple container ready for user's content */}
+        <div className="w-full max-w-5xl bg-white rounded-xl shadow-xs border border-slate-200 p-8 sm:p-12 text-center my-6">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#0176d3] to-[#005da9] flex items-center justify-center text-white mx-auto shadow-md mb-4">
+            <span className="material-symbols-outlined text-[36px]">cloud</span>
+          </div>
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-800">
+            Salesforce Lightning Console
+          </h2>
+          <p className="text-sm text-slate-500 mt-1 max-w-lg mx-auto">
+            Top header aur navigation bar set hai. Neeche ka area bilkul clean kar diya hai.
+          </p>
 
-        {/* Dynamic Views based on Selected Navigation Tab */}
-        <div className="flex-1 w-full">
-          {activeTab === 'overview' && (
-            <OverviewView
-              onSelectTab={handleSelectTab}
-              onOpenSchemaModal={() => setIsSchemaOpen(true)}
-            />
-          )}
+          <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs font-mono text-slate-600">
+            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>Active Tab: <strong className="text-[#0176d3]">{activeTab}</strong></span>
+          </div>
 
-          {activeTab === 'apex-and-lwc-solutions' && (
-            <ApexLwcView onOpenSchedule={() => handleSelectTab('contact-and-schedule')} />
-          )}
-
-          {activeTab === 'architecture-and-impact' && (
-            <ArchitectureImpactView
-              onOpenSchedule={() => handleSelectTab('contact-and-schedule')}
-            />
-          )}
-
-          {activeTab === 'interactive-soql-terminal' && <SoqlTerminalView />}
-
-          {activeTab === 'trailhead-and-badges' && <TrailheadBadgesView />}
-
-          {activeTab === 'contact-and-schedule' && <ScheduleCallView />}
+          <p className="text-xs text-slate-400 mt-6">
+            Bataiye ab iske neeche kaun kaun se specific sections ya cards add karne hain?
+          </p>
         </div>
       </main>
 
@@ -90,11 +74,6 @@ export default function App() {
         isOpen={isAppLauncherOpen}
         onClose={() => setIsAppLauncherOpen(false)}
         onSelectTab={handleSelectTab}
-      />
-
-      <RecordSchemaModal
-        isOpen={isSchemaOpen}
-        onClose={() => setIsSchemaOpen(false)}
       />
     </div>
   );
